@@ -280,6 +280,8 @@ possible ideas.
 6. **Integration tests**. Use the CyberResidences project to test the
    generate as a whole.
 
+That's all folk.
+
    
 
    
