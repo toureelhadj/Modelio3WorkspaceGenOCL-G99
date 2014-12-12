@@ -17,8 +17,9 @@ Installation
 
 2. Download WorkspaceGen-OCL-99 as an archive. The best is to
    download it from GitHub as you will always get the last version.
-   For this you can go to the project on github at use the
-   'download zip' button. It will create a zip of the project
+   For this you can go to the [project on github](https://github.com/megaplanet/Modelio3WorkspaceGenOCL-G99)
+   and use the 'download zip' button (the last button on the right
+   pane). Github will create a zip of the project
    (with -master.zip at the end because this is the 'master'
    branch. You will remove this after)
    
