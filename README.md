@@ -1,6 +1,6 @@
 
-WorkspaceGenOCL-G99
-=====================
+Modelio3WorkspaceGenOCL-G99
+===========================
 
 Summary
 ------------
@@ -15,15 +15,25 @@ Installation
 ---------------
 1. Install modelio if not already done.
 
-2. Extract the **WorkspaceGenOCL-G99.zip** archive in a place
-of your preference. This  will create a directory  named
-WorkspaceGenOCL-G99.
+2. Download WorkspaceGen-OCL-99 as an archive. The best is to
+   download it from GitHub as you will always get the last version.
+   For this you can go to the project on github at use the
+   'download zip' button. It will create a zip of the project
+   (with -master.zip at the end because this is the 'master'
+   branch. You will remove this after)
+   
+2. Extract the **WorkspaceGenOCL-G99 ... .zip** archive in a 
+   place of your preference. This will create a directory with a
+   name like WorkspaceGenOCL-G99 xxx .
 
-3. **Rename this directory**: replace 99 by your group number.
-This directory will be used later as your modelio workspace.
+3. **Rename this directory**: replace 99 by your group number
+   and remove what might follow (e.g. -branch). You should
+   now have on your disk a repository like WorkspaceGenOCL-G17
+   if you have the group number 17. This directory will be used 
+   later as your modelio workspace.
 
 4. Launch modelio. Modelio will start with a default 'workspace'
-create somewhere. We will not use it.
+   create somewhere. We will not use it.
 
 5. Select the your workspace as following:
 
