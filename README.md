@@ -85,7 +85,7 @@ experiment with transformations, etc.
                 print '</ul>'
 
 7. You may get an error message like the following one (displayed in red)
-     'File "<script>", line 1 ... SyntaxError: mismatched input '  ' expecting EOF'. 
+     '... line 1 ... SyntaxError: mismatched input '  ' expecting EOF'. 
     If so this is due to some extra spaces in the copy paste.
     Python is based on the indentation to represent block,
      so if there are some spaces before the first line (for c ...) the interpreter
@@ -100,7 +100,7 @@ experiment with transformations, etc.
      are still some space problem you can correct the program there.
 
 8. At some point you will get the following error:
-     'File "<script>", line 6 ... expecting COLON'
+     '... line 6 ... expecting COLON'
     This is because all composed statement (for ... : , if ... :,  etc) must
      have ':' at the end to indicate that a new block is going to start.
      Java programmers often tend to forget this ':' and will get this error.
