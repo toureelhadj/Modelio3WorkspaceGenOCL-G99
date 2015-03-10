@@ -7,7 +7,7 @@
 FILL THIS SECTION AS SHOWN BELOW AND LINES STARTING WITH ###
 @author Xuan Shong TI WONG SHI <xuan.ti@mydomain.com>
 @author Maria Shohie CEZAR LOPEZ DE ANDERA <maria.cezar@ujf-grenoble.fr>
-@group  G99
+@group  G228
 
 Current state of the generator
 ----------------------------------
@@ -40,6 +40,8 @@ Additional observations could go there
 # problem at hand and could be reused in other 
 # transformations taken UML models as input.
 #---------------------------------------------------------
+for m in selectedElements:
+    print 'model %s' % m.name
 
 # example
 def isAssociationClass(element):
@@ -50,6 +52,7 @@ def isAssociationClass(element):
     for details)
     """
     # TODO
+    print 'Hello'
     
  
 #---------------------------------------------------------
