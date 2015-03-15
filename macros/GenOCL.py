@@ -40,8 +40,6 @@ Additional observations could go there
 # problem at hand and could be reused in other 
 # transformations taken UML models as input.
 #---------------------------------------------------------
-for m in selectedElements:
-    print 'model %s' % m.name
 
 # example
 def isAssociationClass(element):
@@ -52,7 +50,6 @@ def isAssociationClass(element):
     for details)
     """
     # TODO
-    print 'Hello'
     
  
 #---------------------------------------------------------
@@ -107,14 +104,43 @@ def umlEnumeration2OCL(enumeration):
     """
     Generate USE OCL code for the enumeration
     """
+    print 'enum %s' + enumeration.name + ' {'
+    value = ''
+    for val in enumeration.value:
+        value += '\t' + val.name + ',\n'
+    print value[:-2] + '\n}'
 
 def umlBasicType2OCL(basicType):
     """
     Generate USE OCL basic type. Note that
     type conversions are required.
     """
+    type_ = basicType.name
+    if type_ == 'string': 
+        return 'String'
+    elif type_ == 'integer':  
+        return 'Integer'
+    elif type_ == 'float':    
+        return 'Real'
+    elif type_ == 'boolean':  
+        return 'Boolean'
+    else:
+        return type_
     
 # etc.
+
+def umlClass2OCL(class_) :
+    print 'class %s ' % class_.name
+    superClasses = ''
+    if class_.parent:
+        superClasses += ' < '
+        for p in class_.parent:
+            superClasses += '%s, ' % p.superType.name
+        superClasses = superClasses[:-2]
+    print superClasses
+    # attributes
+    # operations
+    print indent('end')
 
 def package2OCL(package):
     """
