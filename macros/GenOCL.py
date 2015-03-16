@@ -72,7 +72,7 @@ def associationsInPackage(package):
     for element in package.ownedElement:
         if isinstance(element, Class):
             for target in element.targetingEnd:
-                if target.association not in associations:
+                if target.association not in associations and target.association.linkToClass == None:
                     associations.append(target.association)
     return associations
     
@@ -137,14 +137,19 @@ def umlBasicType2OCL(basicType):
 # etc.
 
 def umlClass2OCL(class_):
-    abst = 'abstract ' if class_.isAbstract else ''
-    superClasses = ''
-    if class_.parent:
-        superClasses += ' < '
-        for p in class_.parent:
-            superClasses += '%s, ' % p.superType.name
-        superClasses = superClasses[:-2]
-    print '%sclass %s%s' %(abst, class_.name, superClasses)
+    if isAssociationClass(class_):
+        print "associationclass " + class_.name + " between"
+        for l in class_.linkToAssociation.associationPart.end:
+            print "\t%s[%s..%s] role %s" %(l.target.name, l.multiplicityMin, l.multiplicityMax, l.name)
+    else:
+        abst = 'abstract ' if class_.isAbstract else ''
+        superClasses = ''
+        if class_.parent:
+            superClasses += ' < '
+            for p in class_.parent:
+                superClasses += '%s, ' % p.superType.name
+            superClasses = superClasses[:-2]
+        print '%sclass %s%s' %(abst, class_.name, superClasses)
     attributes2OCL(class_.ownedAttribute)
     operations2OCL(class_.ownedOperation)
     print ('end\n')
@@ -183,14 +188,14 @@ def operations2OCL(oper):
         print '\t%s(%s)%s' %(name,params,type_)
 
 def association2OCL(package):
-    #if end.getAggregation() == AggregationKind.KINDISCOMPOSITION:
     for association in associationsInPackage(package):
-        name = 'association'
-        if association.end[0].aggregation == AggregationKind.KINDISCOMPOSITION:
-            name = 'composition'
-        elif association.end[0].aggregation == AggregationKind.KINDISAGGREGATION:
-            name = 'aggregation'
-        print '%s %s between' % (name, association.name)
+        kind = 'association'
+        for x in association.end:
+            if x.aggregation.name == "KindIsComposition":
+                kind = 'composition'
+            elif association.end[0].aggregation.name == "KindIsAggregation":
+                kind = 'aggregation'
+        print '%s %s between' % (kind, association.name)
         for x in association.end:
             print '\t%s[%s..%s] role %s' % (x.target.name, x.multiplicityMin, x.multiplicityMax, x.name)
         print 'end'
