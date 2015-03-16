@@ -5,8 +5,8 @@
 =========================================================
 
 FILL THIS SECTION AS SHOWN BELOW AND LINES STARTING WITH ###
-@author Xuan Shong TI WONG SHI <xuan.ti@mydomain.com>
-@author Maria Shohie CEZAR LOPEZ DE ANDERA <maria.cezar@ujf-grenoble.fr>
+@author Abdourahamane TOURE <toureab@e.ujf-grenoble.fr>
+@author Donatien GBE <>
 @group  G228
 
 Current state of the generator
@@ -104,7 +104,7 @@ def umlEnumeration2OCL(enumeration):
     """
     Generate USE OCL code for the enumeration
     """
-    print 'enum %s' + enumeration.name + ' {'
+    print 'enum %s' % enumeration.name + ' {'
     value = ''
     for val in enumeration.value:
         value += '\t' + val.name + ',\n'
@@ -129,18 +129,50 @@ def umlBasicType2OCL(basicType):
     
 # etc.
 
-def umlClass2OCL(class_) :
-    print 'class %s ' % class_.name
+def umlClass2OCL(class_):
+    abst = 'abstract ' if class_.isAbstract else ''
     superClasses = ''
     if class_.parent:
         superClasses += ' < '
         for p in class_.parent:
             superClasses += '%s, ' % p.superType.name
         superClasses = superClasses[:-2]
-    print superClasses
-    # attributes
-    # operations
-    print indent('end')
+    print '%sclass %s%s' %(abst, class_.name, superClasses)
+    attributes2OCL(class_.ownedAttribute)
+    operations2OCL(class_.ownedOperation)
+    print ('end\n')
+
+def attributes2OCL(attr):
+    if (attr):
+        print "attributes"
+    for a in attr:
+        name = a.name
+        type_ = umlBasicType2OCL(a.type)
+        ann = ''
+        if a.isDerived :
+            ann += ' @derived'
+        if a.visibility == VisibilityMode.PUBLIC :
+            ann += ' @Public'
+        elif a.visibility == VisibilityMode.PRIVATE :
+            ann += ' @Private'
+        elif a.visibility == VisibilityMode.PACKAGEVISIBILITY :
+            ann += ' @Package'
+        elif a.visibility == VisibilityMode.PROTECTED :
+            ann += ' @Protected'
+        print '\t%s : %s%s' %(name ,type_,ann)
+
+def operations2OCL(oper):
+    if (oper):
+        print 'operation'
+    for o in oper:
+        name = o.name
+        params = ''
+        for param in o.IO:
+            params += "%s : %s," % (param.name, umlBasicType2OCL(param.type))
+        if (o.IO):
+            params = params[:-1]
+        type_ = ' : %s' % umlBasicType2OCL(o.return.type) if o.return else ''
+        print '\t%s(%s)%s' %(name,params,type_)
 
 def package2OCL(package):
     """
@@ -153,7 +185,11 @@ def package2OCL(package):
     might exist is not reflected in the USE OCL specification
     as USE is not supporting the concept of package.
     """
-
+    for element in package.getOwnedElement():
+        if isinstance(element, Enumeration):
+            umlEnumeration2OCL(element)
+        if isinstance(element, Class):
+            umlClass2OCL(element)
 
 
 
@@ -171,3 +207,5 @@ def package2OCL(package):
 # (1) computation of the 'package' parameter
 # (2) call of package2OCL(package)
 # (3) do something with the result
+for package in selectedElements:
+    package2OCL(package)
