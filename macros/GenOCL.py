@@ -49,7 +49,7 @@ def isAssociationClass(element):
     has a associated association. (see the Modelio metamodel
     for details)
     """
-    # TODO
+    return element.linkToAssociation != None
     
  
 #---------------------------------------------------------
@@ -68,6 +68,13 @@ def associationsInPackage(package):
     arrive to a class which is recursively contained in
     a package.
     """
+    associations = []
+    for element in package.ownedElement:
+        if isinstance(element, Class):
+            for target in element.targetingEnd:
+                if target.association not in associations:
+                    associations.append(target.association)
+    return associations
     
 
     
@@ -175,6 +182,19 @@ def operations2OCL(oper):
         type_ = ' : %s' % umlBasicType2OCL(o.return.type) if o.return else ''
         print '\t%s(%s)%s' %(name,params,type_)
 
+def association2OCL(package):
+    #if end.getAggregation() == AggregationKind.KINDISCOMPOSITION:
+    for association in associationsInPackage(package):
+        name = 'association'
+        if association.end[0].aggregation == AggregationKind.KINDISCOMPOSITION:
+            name = 'composition'
+        elif association.end[0].aggregation == AggregationKind.KINDISAGGREGATION:
+            name = 'aggregation'
+        print '%s %s between' % (name, association.name)
+        for x in association.end:
+            print '\t%s[%s..%s] role %s' % (x.target.name, x.multiplicityMin, x.multiplicityMax, x.name)
+        print 'end'
+
 def package2OCL(package):
     """
     Generate a complete OCL specification for a given package.
@@ -191,6 +211,7 @@ def package2OCL(package):
             umlEnumeration2OCL(element)
         if isinstance(element, Class):
             umlClass2OCL(element)
+    association2OCL(package)
 
 
 

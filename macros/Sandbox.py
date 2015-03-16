@@ -1,5 +1,3 @@
-print "Hello Fama!"
-
 # This is a comment
 print '\n'*3
 print '-'*80  # isn't that nice?
