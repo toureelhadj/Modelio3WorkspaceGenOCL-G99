@@ -6,7 +6,7 @@
 
 FILL THIS SECTION AS SHOWN BELOW AND LINES STARTING WITH ###
 @author Abdourahamane TOURE <toureab@e.ujf-grenoble.fr>
-@author Donatien GBE <>
+@author Donatien GBE <donatien.gbe@gmail.com>
 @group  G228
 
 Current state of the generator
@@ -159,6 +159,7 @@ def attributes2OCL(attr):
             ann += ' @Package'
         elif a.visibility == VisibilityMode.PROTECTED :
             ann += ' @Protected'
+        ann = ' --' + ann if ann else ''
         print '\t%s : %s%s' %(name ,type_,ann)
 
 def operations2OCL(oper):
