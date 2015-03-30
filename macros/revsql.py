@@ -14,8 +14,19 @@ root = tree.getroot()
 fact= theUMLFactory()
 myp = instanceNamed(Package,"MyPackage")
 
-def createClass(nameClass):
+def sqlType2UML(type_):
+    if type_ in ['VARCHAR', 'VARCHAR2', 'CHAR']: 
+        return 'string'
+    elif type_ in ['INT', 'BIGINT']:  
+        return 'integer'
+    elif type_ == 'NUMBER':    
+        return 'float'
+    elif type_ == 'DATE':  
+        return 'Date'
+    else:
+        return type_ 
 
+def createClass(nameClass):
     try:
         trans = theSession().createTransaction("Class " + nameClass)
         c1 = fact.createClass(nameClass,myp)
@@ -28,11 +39,11 @@ def createClass(nameClass):
     trans.close()
         
   
-def createAttribute(className, AttributeName):
+def createAttribute(className, type_ ,AttributeName):
     try:
         trans = theSession().createTransaction("Attribut " + AttributeName)
         class_ = instanceNamed(Class, className)
-        a = fact.createAttribute(AttributeName, class_)
+        a = fact.createAttribute(AttributeName, type_, class_)
         trans.commit()
     except:
         trans.rollback()
@@ -49,7 +60,8 @@ for element in root:
         for attribute in table.findall("column"):
             if attribute.attrib.get("name") != None:
                 attribute_ = attribute.attrib.get("name")
-                print "\t" + attribute.attrib.get("name")
-                #createAttribute(class_, attribute_)
+                type_ = sqlType2UML(attribute.attrib.get("type"))
+                print "\t" + attribute_ + " : " + type_
+                #createAttribute(class_, type_, attribute_)
         
         

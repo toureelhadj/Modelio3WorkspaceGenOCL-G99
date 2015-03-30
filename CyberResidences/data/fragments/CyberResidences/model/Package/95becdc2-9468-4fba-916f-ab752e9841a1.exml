@@ -2,6 +2,7 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MyPackage" version="3">
   <DEPS>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
+    <COMPID name="address" mc="Class" uid="5c6c336d-c8fb-4f1e-843b-671a14f23c98"/>
   </DEPS>
   <OBJECT>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
@@ -15,6 +16,10 @@
       <ATT name="Name"><![CDATA[MyPackage]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
-    <DEPENDENCIES></DEPENDENCIES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="address" mc="Class" uid="5c6c336d-c8fb-4f1e-843b-671a14f23c98"/>
+      </COMP>
+    </DEPENDENCIES>
   </OBJECT>
 </EXT>
