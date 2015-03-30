@@ -4,6 +4,7 @@
     <ID name="CyberResidences" mc="Package" uid="19dd0491-2ea4-498c-a3d1-52a9a5dcaf2b"/>
     <COMPID name="Buildings" mc="Package" uid="d2fe0991-c8c0-4885-95fa-6fa12b63e24e"/>
     <COMPID name="CyberResidence_FullView" mc="ClassDiagram" uid="8c9fbf71-7e94-4051-9635-be891a8e4724"/>
+    <COMPID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
     <COMPID name="Rates" mc="Package" uid="0e8266dd-dfc9-4238-a1b4-7500d4e25302"/>
     <COMPID name="Rents" mc="Package" uid="ea8a3d44-2340-4326-a8e5-e8126679f267"/>
     <FOREIGNID name="ConstrainedModel" mc="Stereotype" uid="b6fe0933-5bf5-4b56-9684-41b46db285d4"/>
@@ -26,6 +27,7 @@
         <COMPID name="Buildings" mc="Package" uid="d2fe0991-c8c0-4885-95fa-6fa12b63e24e"/>
         <COMPID name="Rents" mc="Package" uid="ea8a3d44-2340-4326-a8e5-e8126679f267"/>
         <COMPID name="Rates" mc="Package" uid="0e8266dd-dfc9-4238-a1b4-7500d4e25302"/>
+        <COMPID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
       </COMP>
       <LINK relation="Extension">
         <FOREIGNID name="ConstrainedModel" mc="Stereotype" uid="b6fe0933-5bf5-4b56-9684-41b46db285d4"/>

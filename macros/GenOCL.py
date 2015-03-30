@@ -234,5 +234,12 @@ def package2OCL(package):
 # (1) computation of the 'package' parameter
 # (2) call of package2OCL(package)
 # (3) do something with the result
-for package in selectedElements:
-    package2OCL(package)
+for element in selectedElements:
+    if isinstance(element, Package):
+        package2OCL(element)
+    elif isinstance(element, Class):
+        umlClass2OCL(element)
+    elif isinstance(element, Enumeration):
+        umlEnumeration2OCL(element)
+    else:
+        print 'element missed'
