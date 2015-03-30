@@ -2,7 +2,15 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MyPackage" version="3">
   <DEPS>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
-    <COMPID name="address" mc="Class" uid="5c6c336d-c8fb-4f1e-843b-671a14f23c98"/>
+    <COMPID name="address" mc="Class" uid="b2c7153d-8344-4029-9974-f8da82794153"/>
+    <COMPID name="author" mc="Class" uid="360d2768-2e4b-4179-b992-68415233a668"/>
+    <COMPID name="book" mc="Class" uid="b8a86443-9f49-4afd-808d-eaa76c50d899"/>
+    <COMPID name="book_author" mc="Class" uid="5457a1c2-169d-4e0d-a736-3175aacee869"/>
+    <COMPID name="book_location" mc="Class" uid="73c914f4-3734-4a5d-a473-312b789bdfb3"/>
+    <COMPID name="borrowed_book" mc="Class" uid="d4eb3c3f-a6c1-4b68-ab7f-2ba6768cac73"/>
+    <COMPID name="borrower" mc="Class" uid="7db03201-f31f-4d96-bc25-9ef8f889f075"/>
+    <COMPID name="library_branch" mc="Class" uid="f6fae2f2-59f7-4a22-8d73-7bb4eadc19dd"/>
+    <COMPID name="publisher" mc="Class" uid="d3147422-5e41-417a-8800-87ebc0e9665b"/>
   </DEPS>
   <OBJECT>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
@@ -18,7 +26,15 @@
     </ATTRIBUTES>
     <DEPENDENCIES>
       <COMP relation="OwnedElement">
-        <COMPID name="address" mc="Class" uid="5c6c336d-c8fb-4f1e-843b-671a14f23c98"/>
+        <COMPID name="address" mc="Class" uid="b2c7153d-8344-4029-9974-f8da82794153"/>
+        <COMPID name="author" mc="Class" uid="360d2768-2e4b-4179-b992-68415233a668"/>
+        <COMPID name="book" mc="Class" uid="b8a86443-9f49-4afd-808d-eaa76c50d899"/>
+        <COMPID name="book_author" mc="Class" uid="5457a1c2-169d-4e0d-a736-3175aacee869"/>
+        <COMPID name="book_location" mc="Class" uid="73c914f4-3734-4a5d-a473-312b789bdfb3"/>
+        <COMPID name="borrowed_book" mc="Class" uid="d4eb3c3f-a6c1-4b68-ab7f-2ba6768cac73"/>
+        <COMPID name="borrower" mc="Class" uid="7db03201-f31f-4d96-bc25-9ef8f889f075"/>
+        <COMPID name="library_branch" mc="Class" uid="f6fae2f2-59f7-4a22-8d73-7bb4eadc19dd"/>
+        <COMPID name="publisher" mc="Class" uid="d3147422-5e41-417a-8800-87ebc0e9665b"/>
       </COMP>
     </DEPENDENCIES>
   </OBJECT>

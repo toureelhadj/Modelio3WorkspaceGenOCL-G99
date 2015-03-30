@@ -15,14 +15,13 @@ fact= theUMLFactory()
 myp = instanceNamed(Package,"MyPackage")
 
 def sqlType2UML(type_):
+    types = theSession().getModel().getUmlTypes()
     if type_ in ['VARCHAR', 'VARCHAR2', 'CHAR']: 
-        return 'string'
+        return types.getSTRING()
     elif type_ in ['INT', 'BIGINT']:  
-        return 'integer'
-    elif type_ == 'NUMBER':    
-        return 'float'
+        return types.getINTEGER()
     elif type_ == 'DATE':  
-        return 'Date'
+        return types.getDATE()
     else:
         return type_ 
 
@@ -34,8 +33,7 @@ def createClass(nameClass):
         trans.close()
     except:
         trans.rollback()
-        raise
-    
+        raise    
     trans.close()
         
   
@@ -50,18 +48,17 @@ def createAttribute(className, type_ ,AttributeName):
         raise
     trans.close()
         
-        
-for element in root:
-    print (element.tag)
-    for table in element:
+def process():
+    for table in root.find("tables"):
         class_ = table.attrib.get("name")
         print class_
-        #createClass(class_)
+        createClass(class_)
         for attribute in table.findall("column"):
-            if attribute.attrib.get("name") != None:
-                attribute_ = attribute.attrib.get("name")
-                type_ = sqlType2UML(attribute.attrib.get("type"))
-                print "\t" + attribute_ + " : " + type_
-                #createAttribute(class_, type_, attribute_)
-        
-        
+            attribute_ = attribute.attrib.get("name")
+            type_ = sqlType2UML(attribute.attrib.get("type"))
+            print "\t" + attribute_ + " : " + type_.name
+            createAttribute(class_, type_, attribute_)
+
+for class_ in myp.getOwnedElement(Class):
+    class_.delete()
+process()
