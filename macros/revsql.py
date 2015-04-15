@@ -10,7 +10,6 @@ tree.parse(DIRECTORY + "library.xml")
 
 root = tree.getroot()
 
-
 fact= theUMLFactory()
 myp = instanceNamed(Package,"MyPackage")
 
@@ -25,40 +24,57 @@ def sqlType2UML(type_):
     else:
         return type_ 
 
-def createClass(nameClass):
+class UMLClass:
+    def __init__(self):
+        self.name = ''
+        self.attributes = []
+        self.pks = []
+        self.fks = []
+
+class UMLAttribute:
+    def __init__(self):
+        self.name = ''
+        self.children = []
+        self.parent = ''
+
+def createClass(class_):
     try:
-        trans = theSession().createTransaction("Class " + nameClass)
-        c1 = fact.createClass(nameClass,myp)
+        trans = theSession().createTransaction("Class " + class_.name)
+        print class_.name
+        fact.createClass(class_.name, myp)
+        for a in class_.attributes:
+            print '\t' + a.name
+            createAttribute(class_, a) 
         trans.commit()
         trans.close()
     except:
         trans.rollback()
         raise    
     trans.close()
-        
   
-def createAttribute(className, type_ ,AttributeName):
-    try:
-        trans = theSession().createTransaction("Attribut " + AttributeName)
-        class_ = instanceNamed(Class, className)
-        a = fact.createAttribute(AttributeName, type_, class_)
-        trans.commit()
-    except:
-        trans.rollback()
-        raise
-    trans.close()
+def createAttribute(class_, attribute):
+    c = instanceNamed(Class, class_.name)
+    a = fact.createAttribute(attribute.name, sqlType2UML(attribute.type_), c)
+    if attribute.name in class_.pks:
+        a.addStereotype("LocalModule", "PK")
         
 def process():
     for table in root.find("tables"):
-        class_ = table.attrib.get("name")
-        print class_
-        createClass(class_)
+        class_ = UMLClass()
+        class_.name = table.attrib.get("name")
+        for pk in table.findall("primaryKey"):
+            class_.pks.append(pk.attrib.get("column"))
         for attribute in table.findall("column"):
-            attribute_ = attribute.attrib.get("name")
-            type_ = sqlType2UML(attribute.attrib.get("type"))
-            print "\t" + attribute_ + " : " + type_.name
-            createAttribute(class_, type_, attribute_)
+            attribute_ = UMLAttribute()
+            attribute_.name = attribute.attrib.get("name")
+            attribute_.type_ = attribute.attrib.get("type")
+            if attribute.find('parent') != None:
+                attribute_.parent = attribute.find('parent').attrib.get('foreignKey')
+            for child in attribute.findall('child'):
+                attribute_.children.append(child.attrib.get('foreignKey'))
+            class_.attributes.append(attribute_)
+        createClass(class_)
 
-for class_ in myp.getOwnedElement(Class):
-    class_.delete()
+for c in myp.getOwnedElement(Class):
+    c.delete();
 process()
