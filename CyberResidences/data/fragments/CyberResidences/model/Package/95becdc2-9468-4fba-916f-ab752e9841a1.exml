@@ -2,6 +2,15 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="MyPackage" version="3">
   <DEPS>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
+    <COMPID name="address" mc="Class" uid="ada510fb-584a-4498-9ecd-fc80886c9b86"/>
+    <COMPID name="author" mc="Class" uid="e0573fc6-585e-4c28-882f-e2ebb49d8a2e"/>
+    <COMPID name="book" mc="Class" uid="7218ab39-30d0-4049-9be2-f3cabca7e0c9"/>
+    <COMPID name="book_author" mc="Class" uid="7b715e15-0a87-439a-9fc7-fd3a2a065ed5"/>
+    <COMPID name="book_location" mc="Class" uid="16024f09-8c4e-4902-8183-42aa653c9bbc"/>
+    <COMPID name="borrowed_book" mc="Class" uid="f822a89b-0e19-4591-a625-2da158e0ac9f"/>
+    <COMPID name="borrower" mc="Class" uid="e7f0a531-27cc-4027-958d-4f6f3b3eb327"/>
+    <COMPID name="library_branch" mc="Class" uid="03748dfc-10b5-427e-b479-3e52e581a586"/>
+    <COMPID name="publisher" mc="Class" uid="e1759d13-0db9-44a0-a8ed-188ef911aee3"/>
   </DEPS>
   <OBJECT>
     <ID name="MyPackage" mc="Package" uid="95becdc2-9468-4fba-916f-ab752e9841a1"/>
@@ -15,6 +24,18 @@
       <ATT name="Name"><![CDATA[MyPackage]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
-    <DEPENDENCIES></DEPENDENCIES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedElement">
+        <COMPID name="address" mc="Class" uid="ada510fb-584a-4498-9ecd-fc80886c9b86"/>
+        <COMPID name="author" mc="Class" uid="e0573fc6-585e-4c28-882f-e2ebb49d8a2e"/>
+        <COMPID name="book" mc="Class" uid="7218ab39-30d0-4049-9be2-f3cabca7e0c9"/>
+        <COMPID name="book_author" mc="Class" uid="7b715e15-0a87-439a-9fc7-fd3a2a065ed5"/>
+        <COMPID name="book_location" mc="Class" uid="16024f09-8c4e-4902-8183-42aa653c9bbc"/>
+        <COMPID name="borrowed_book" mc="Class" uid="f822a89b-0e19-4591-a625-2da158e0ac9f"/>
+        <COMPID name="borrower" mc="Class" uid="e7f0a531-27cc-4027-958d-4f6f3b3eb327"/>
+        <COMPID name="library_branch" mc="Class" uid="03748dfc-10b5-427e-b479-3e52e581a586"/>
+        <COMPID name="publisher" mc="Class" uid="e1759d13-0db9-44a0-a8ed-188ef911aee3"/>
+      </COMP>
+    </DEPENDENCIES>
   </OBJECT>
 </EXT>

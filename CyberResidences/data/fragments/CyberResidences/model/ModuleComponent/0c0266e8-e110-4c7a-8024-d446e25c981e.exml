@@ -2,6 +2,8 @@
 <!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="LocalModule" version="3">
   <DEPS>
     <ID name="LocalModule" mc="ModuleComponent" uid="0c0266e8-e110-4c7a-8024-d446e25c981e"/>
+    <COMPID name="Profil" mc="Profile" uid="fc84e798-a113-4407-bebf-d312fbe37e5c"/>
+    <FOREIGNID name="UML2StereotypeProperty" mc="Stereotype" uid="bae91a3b-7009-11e0-a462-0027103f347c"/>
   </DEPS>
   <OBJECT>
     <ID name="LocalModule" mc="ModuleComponent" uid="0c0266e8-e110-4c7a-8024-d446e25c981e"/>
@@ -23,6 +25,13 @@
       <ATT name="Name"><![CDATA[LocalModule]]></ATT>
       <ATT name="status">1970354901745664</ATT>
     </ATTRIBUTES>
-    <DEPENDENCIES></DEPENDENCIES>
+    <DEPENDENCIES>
+      <COMP relation="OwnedProfile">
+        <COMPID name="Profil" mc="Profile" uid="fc84e798-a113-4407-bebf-d312fbe37e5c"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="UML2StereotypeProperty" mc="Stereotype" uid="bae91a3b-7009-11e0-a462-0027103f347c"/>
+      </LINK>
+    </DEPENDENCIES>
   </OBJECT>
 </EXT>

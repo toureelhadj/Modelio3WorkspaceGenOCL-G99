@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="Profil" version="3">
+  <DEPS>
+    <ID name="Profil" mc="Profile" uid="fc84e798-a113-4407-bebf-d312fbe37e5c"/>
+    <COMPID name="FK" mc="Stereotype" uid="ca7a5d3a-ce6b-4465-ae01-f40e2ede8f91"/>
+    <COMPID name="FKC" mc="Stereotype" uid="cbb6d8a5-49c8-43bc-92ff-e584d8deed7f"/>
+    <COMPID name="PK" mc="Stereotype" uid="5ee6b735-02d7-4123-bedf-fc5dd1e23b84"/>
+    <COMPID name="T" mc="Stereotype" uid="066f34b2-27bb-4252-a723-25f9e30d2fbf"/>
+    <FOREIGNID name="metamodel" mc="Stereotype" uid="00700680-0000-01e7-0000-000000000000"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="Profil" mc="Profile" uid="fc84e798-a113-4407-bebf-d312fbe37e5c"/>
+    <PID name="LocalModule" mc="ModuleComponent" uid="0c0266e8-e110-4c7a-8024-d446e25c981e"/>
+    <ATTRIBUTES>
+      <ATT name="JCode"></ATT>
+      <ATT name="IsInstantiable">false</ATT>
+      <ATT name="IsAbstract">false</ATT>
+      <ATT name="IsLeaf">false</ATT>
+      <ATT name="IsRoot">false</ATT>
+      <ATT name="Visibility">Public</ATT>
+      <ATT name="Name"><![CDATA[Profil]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES>
+      <COMP relation="DefinedStereotype">
+        <COMPID name="PK" mc="Stereotype" uid="5ee6b735-02d7-4123-bedf-fc5dd1e23b84"/>
+        <COMPID name="FK" mc="Stereotype" uid="ca7a5d3a-ce6b-4465-ae01-f40e2ede8f91"/>
+        <COMPID name="T" mc="Stereotype" uid="066f34b2-27bb-4252-a723-25f9e30d2fbf"/>
+        <COMPID name="FKC" mc="Stereotype" uid="cbb6d8a5-49c8-43bc-92ff-e584d8deed7f"/>
+      </COMP>
+      <LINK relation="Extension">
+        <FOREIGNID name="metamodel" mc="Stereotype" uid="00700680-0000-01e7-0000-000000000000"/>
+      </LINK>
+    </DEPENDENCIES>
+  </OBJECT>
+</EXT>

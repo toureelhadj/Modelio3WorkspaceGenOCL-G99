@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!--GENERATED FILE, PLEASE DO NOT EDIT!!!--><EXT object="PK" version="3">
+  <DEPS>
+    <ID name="PK" mc="Stereotype" uid="5ee6b735-02d7-4123-bedf-fc5dd1e23b84"/>
+  </DEPS>
+  <OBJECT>
+    <ID name="PK" mc="Stereotype" uid="5ee6b735-02d7-4123-bedf-fc5dd1e23b84"/>
+    <PID name="Profil" mc="Profile" uid="fc84e798-a113-4407-bebf-d312fbe37e5c"/>
+    <ATTRIBUTES>
+      <ATT name="Image"></ATT>
+      <ATT name="Icon"></ATT>
+      <ATT name="IsHidden">false</ATT>
+      <ATT name="LabelKey"><![CDATA[PK]]></ATT>
+      <ATT name="BaseClassName"><![CDATA[ModelElement]]></ATT>
+      <ATT name="Name"><![CDATA[PK]]></ATT>
+      <ATT name="status">1970354901745664</ATT>
+    </ATTRIBUTES>
+    <DEPENDENCIES></DEPENDENCIES>
+  </OBJECT>
+</EXT>
